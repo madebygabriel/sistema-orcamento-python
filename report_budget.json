@@ -1,0 +1,24 @@
+{
+    "client": {
+        "name": "Rodrigo Rocha",
+        "telephone": "99887-7665",
+        "email": "rodrigo@gmail.com"
+    },
+    "products": [
+        {
+            "code": "Q1M3",
+            "name": "Quadro Carreta",
+            "quantity": 2,
+            "price": 7056.97,
+            "total_price": 14113.94
+        },
+        {
+            "code": "P1M3",
+            "name": "Parede Quadricular",
+            "quantity": 2,
+            "price": 6090.55,
+            "total_price": 12181.1
+        }
+    ],
+    "price_budget": 26295.04
+}
