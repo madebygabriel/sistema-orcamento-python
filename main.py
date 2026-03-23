@@ -18,8 +18,6 @@ class Product:
         self.price = price
         self.total_price = self.price * self.quantity
 
-        # def total_value(self):
-        #     self.total_price = 
 
 class Budget:
     def __init__(self, code):
@@ -77,8 +75,7 @@ class Budget:
             self.cost_price += product.price * product.quantity
 
         return self.cost_price
-        
-
+    
     # Criação de relatório do orçamento (todas informações)
     def budget_report(self):
         # Report inicialization (dict)
