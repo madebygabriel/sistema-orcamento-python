@@ -16,7 +16,10 @@ class Product:
         self.name = name
         self.quantity = quantity
         self.price = price
+        self.total_price = self.price * self.quantity
 
+        # def total_value(self):
+        #     self.total_price = 
 
 class Budget:
     def __init__(self, code):
@@ -47,11 +50,17 @@ class Budget:
     # Listagem de produtos
     def list_products(self):
         """
-        Each product that goes through "for" is converted into a dunder dict.
+        Each product that goes through "for" is converted into dict.
         """
 
         return [
-            product.__dict__
+            {
+                'code': product.code,
+                'name': product.name,
+                'quantity': product.quantity,
+                'price': product.price,
+                'total_price': product.total_price
+            }
             for product in self._products
         ]
 
@@ -62,13 +71,13 @@ class Budget:
         self._products = class variable that will send items to: product;
         returning the final value.
         """
-
         self.cost_price = 0
 
         for product in self._products:
             self.cost_price += product.price * product.quantity
 
         return self.cost_price
+        
 
     # Criação de relatório do orçamento (todas informações)
     def budget_report(self):
@@ -92,7 +101,7 @@ class Budget:
     def save_report_json(self):
         import json
 
-        with open('report_budget.json', 'w', encoding='utf-8') as file:
+        with open(f'orcamento_{self.code}.json', 'w', encoding='utf-8') as file:
             json.dump(self.budget_report(), file, ensure_ascii=False, indent=4)
 
 # PRODUTOS
@@ -105,11 +114,14 @@ ferramentas = Product(code='AF4PO5', name='Discos, acessórios e bronze', quanti
 # CLIENTE
 c1 = Client('Rodrigo Rocha', '99887-7665', 'rodrigo@gmail.com')
 
-# ORÇAMENTOS
+# ORÇAMENTO
 orcamento1 = Budget(1)
 orcamento1.client = c1
-orcamento1.add_products(quadro_carreta)
-orcamento1.add_products(paredes)
+orcamento1.add_product(quadro_carreta)
+orcamento1.add_product(paredes)
 
-orcamento1.save_report_json()
+orcamento1.list_products()
+
+orcamento1.save_report_json() 
+
 
